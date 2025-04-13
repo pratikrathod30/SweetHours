@@ -1,11 +1,10 @@
-from tkinter import *
-import time
 import os
-import sqlite3
-from tkinter import ttk
-from sqlite3 import *
+import time
 import random
-from tkinter import messagebox
+import sqlite3
+from tkinter import *
+from tkinter import messagebox, ttk
+
 
 def img(file_name):
     return PhotoImage(file=os.path.join(os.path.dirname(__file__), file_name))
