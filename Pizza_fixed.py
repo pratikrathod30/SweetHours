@@ -2,6 +2,7 @@ import os
 import time
 import random
 import sqlite3
+from sqlite3 import connect 
 from tkinter import *
 from tkinter import messagebox, ttk
 
@@ -251,7 +252,7 @@ class sweet_hours:
             else:
                 messagebox.showinfo("Login", "You are Not Registered Yet")
         else:
-        # ✅ Fetch real name, email, and mobile
+      
             sf.cursor.execute("""
             SELECT first || ' ' || last, email, mob
             FROM customer
