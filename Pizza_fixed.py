@@ -1506,48 +1506,61 @@ class sweet_hours:
 
  #------------last page 15------------
 
-    '''def pay_page(sf,x):
-        sf.x=x
+    def pay_page(sf, x):
+        sf.x = x
         sf.scr.destroy()
-        sf.scr=Tk()
-        sf.scr.title("wellcome to the world of sweet")
+        sf.scr = Tk()
+        sf.scr.title("Welcome to the world of sweet")
         sf.scr.geometry("1366x768")
         sf.scr.iconbitmap(os.path.join(os.path.dirname(__file__), 'icon.ico'))
 
-        sf.order_f1=Frame(sf.scr,height=100,width=1366)
-        sf.logo=img("1.PNG")
-        sf.ba=Label(sf.order_f1,image=sf.logo,height=150).place(x=0,y=0)
-        sf.order_f1.pack(fill=BOTH,expand=1)
-        
-        sf.order_f2=Frame(sf.scr,height=618,width=1366)
-        sf.canvas=Canvas(sf.order_f2,height=618,width=1366)
+        sf.order_f1 = Frame(sf.scr, height=100, width=1366)
+        sf.logo = img("1.PNG")
+        Label(sf.order_f1, image=sf.logo, height=150).place(x=0, y=0)
+        sf.order_f1.pack(fill=BOTH, expand=1)
+
+        sf.order_f2 = Frame(sf.scr, height=618, width=1366)
+        sf.canvas = Canvas(sf.order_f2, height=618, width=1366)
         sf.canvas.pack()
-        sf.logo1=img("a3.png")
-        sf.canvas.create_image(683,309,image=sf.logo1)
+        sf.logo1 = img("a3.png")
+        sf.canvas.create_image(683, 309, image=sf.logo1)
+
+        sf.home = Button(sf.order_f1, text="Log Out", command=lambda : print("Logout Clicked"), bg="#0b1335", cursor="hand2", fg="white", bd=5, font=("default", 16, 'bold'))
+        sf.home.place(x=1100, y=60)
+
+        sf.log_order = Label(sf.order_f2, text="SCAN FOR PAYMENT", bg="saddlebrown", fg="beige", width=18, font=("Cooper Black", 22, 'bold'))
+        sf.log_order.place(x=880, y=26)
+
+        sf.canvas.create_rectangle(1325, 90, 825, 500, fill="burlywood", outline="black", width=6)
+        sf.amt = sf.amount
+        sf.text = "Total : " + str(sf.amt)
+
+        sf.tot = Label(sf.order_f2, text=sf.text, bg="#f2da9d", width=12, font=("Cooper Black", 22, 'bold'))
+        sf.tot.place(x=950, y=510)
         
-        sf.home=Button(sf.order_f1,text="Log Out",command=lambda:sf.Login(),bg="#0b1335",cursor="hand2",fg="white",bd=5,font=("default",16,'bold'))
-        sf.home.place(x=1100,y=60)
+        sf.canvas.create_text(1080, 105, font=("cooper black", 18))
         
-        sf.log_order=Label(sf.order_f2,text="YOUR ORDER",bg="saddlebrown",fg="beige",width=18,font=("Cooper Black",22,'bold'))
-        sf.log_order.place(x=880,y=26)
+        sf.qr_img = img("qrcode.png")  
+        sf.canvas.create_image(1075, 290, image=sf.qr_img)
+        
+        sf.pay_btn = Button(
+        sf.order_f2,
+        text="I have paid",
+        command=lambda: sf.Address(sf.x),
+        bg="#0f3603",
+        fg="white",
+        font=("default", 16, 'bold'),
+        bd=5,
+        cursor="hand2"
+        )
+        sf.pay_btn.place(x=660, y=390)
+        sf.canvas.create_text(1080, 105, font=("cooper black", 18))
+        
+        sf.add_button = Button(sf.order_f2, text="Add more", command=lambda: sf.menulist(sf.x), bg="#0b1335", cursor="hand2", fg="white", bd=5, font=("default", 16, 'bold'))
+        sf.add_button.place(x=660, y=450)
 
-        sf.canvas.create_rectangle(1325, 90, 825, 500,fill="burlywood",outline="black",width=6)
-        sf.amt=sf.amount
-
-        sf.text="Total : "+str(sf.amt)
-        sf.tot=Label(sf.order_f2,text=sf.text,bg="#f2da9d",width=12,font=("Cooper Black",22,'bold'))
-        sf.tot.place(x=950,y=510)
-
-        if sf.x=="deli":
-            sf.y=sf.Address
-        if sf.x=="pick":
-            sf.y=sf.orderpay
-        sf.pay=Button(sf.order_f2,text="Pay",command=lambda:sf.y(sf.x),bg="#0b1335",cursor="hand2",fg="white",bd=5,font=("default",16,'bold'))
-        sf.pay.place(x=660,y=390)
-        sf.add_button=Button(sf.order_f2,text="Add more",command=lambda:sf.menulist(sf.x),bg="#0b1335",cursor="hand2",fg="white",bd=5,font=("default",16,'bold'))
-        sf.add_button.place(x=660,y=450)
-        sf.canvas.create_text(1080,105,text="Items\tSize\tQty\tPrice",font=("cooper black",18))
-        sf.canvas.create_text(1075,115,text="_____________________________________",font=("cooper black",18))'''
+        sf.order_f2.pack(fill=BOTH, expand=1)
+        sf.scr.mainloop()
 
     def thankyou(sf,x):
         sf.scr.destroy()
@@ -1582,6 +1595,6 @@ class sweet_hours:
 #x=sweet_hours()
 #x.main()
 if __name__ == "__main__":
-    setup_database()  # 🟢 Yeh line very important hai (DB banata hai)
+    setup_database()  
     app = sweet_hours()
     app.main()
